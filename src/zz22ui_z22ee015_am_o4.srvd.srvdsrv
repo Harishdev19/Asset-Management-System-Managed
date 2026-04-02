@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZZ22C_22EE015_T_ASSET'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZZ22C_22EE015_T_ASSET'
+  }
+}
+define service ZZ22UI_Z22EE015_AM_O4 provider contracts odata_v4_ui {
+  expose ZZ22C_22EE015_T_ASSET;
+}

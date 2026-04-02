@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZZ22C_22EE015_T_ASSET'
+@MappingRole: true
+define role ZZ22C_22EE015_T_ASSET {
+  grant select on ZZ22C_22EE015_T_ASSET
+  where INHERITING CONDITIONS FROM ENTITY ZZ22R_22EE015_T_ASSET REPLACING { ROOT WITH _BaseEntity };
+}

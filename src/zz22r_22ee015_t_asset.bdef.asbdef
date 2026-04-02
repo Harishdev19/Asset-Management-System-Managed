@@ -1,0 +1,61 @@
+managed implementation in class ZZ22BP_R_22EE015_T_ASSET unique;
+strict ( 2 );
+with draft;
+extensible;
+
+define behavior for ZZ22R_22EE015_T_ASSET alias Zz22r22ee015TAsset
+persistent table Z22EE015_T_ASSET
+extensible
+draft table ZZ2222015_T_AS_D
+etag master LastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+
+  field ( mandatory : create )
+    AssetID;
+
+  field ( readonly )
+    CreatedBy,
+    CreatedAt,
+    LastChangedBy,
+    LastChangedAt,
+    Status;
+
+  field ( readonly : update )
+    AssetID;
+
+  create;
+  update;
+  delete;
+
+
+  determination set_status on modify { field WarrantyEndDate; }
+
+
+  validation check_dates on save { field PurchaseDate, WarrantyEndDate; }
+
+
+  action mark_maintenance result [1] $self;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for Z22EE015_T_ASSET corresponding extensible
+  {
+    AssetID         = ASSET_ID;
+    AssetName       = ASSET_NAME;
+    Category        = CATEGORY;
+    PurchaseDate    = PURCHASE_DATE;
+    WarrantyEndDate = WARRANTY_END_DATE;
+    Status          = STATUS;
+    CreatedBy       = CREATED_BY;
+    CreatedAt       = CREATED_AT;
+    LastChangedBy   = LAST_CHANGED_BY;
+    LastChangedAt   = LAST_CHANGED_AT;
+  }
+
+}
